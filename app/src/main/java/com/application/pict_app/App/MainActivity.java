@@ -1,7 +1,8 @@
-package com.application.pict_app;
+package com.application.pict_app.App;
 
 import android.os.Bundle;
 
+import com.application.pict_app.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
