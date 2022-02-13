@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PICT_App">
         <activity
+            android:name=".App.View.Movie_Room.UpdateMovie"
+            android:exported="false" />
+        <activity
             android:name=".App.View.Movie_Room.AddMovie"
             android:exported="false" />
         <activity

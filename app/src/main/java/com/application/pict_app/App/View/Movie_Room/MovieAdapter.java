@@ -55,10 +55,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.TasksViewHol
 
         @Override
         public void onClick(View view) {
-//            Movies movies = movieList.get(getAdapterPosition());
-//            Intent intent = new Intent(mCtx, UpdateMovie.class);
-//            intent.putExtra("movie", movies);
-//            mCtx.startActivity(intent);
+            Movies movies = movieList.get(getAdapterPosition());
+            Intent intent = new Intent(mCtx, UpdateMovie.class);
+            intent.putExtra("movie", movies);
+            mCtx.startActivity(intent);
         }
     }
 }
