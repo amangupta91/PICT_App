@@ -6,11 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
 import com.application.pict_app.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 public class MovieListView extends AppCompatActivity {
 
@@ -34,5 +37,42 @@ public class MovieListView extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        getMovieList();
+    }
+
+    private void getMovieList() {
+
+        class GetMovies extends AsyncTask<Void,Void, List<Movies>>{
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                // display a progress dialog
+                progressDialog = new ProgressDialog(MovieListView.this);
+                progressDialog.setCancelable(false); // set cancelable to false
+                progressDialog.setMessage("Please Wait"); // set message
+                progressDialog.show(); // show progress dialog
+            }
+
+            @Override
+            protected List<Movies> doInBackground(Void... voids) {
+                List<Movies> taskList = MoviesDatabaseClient
+                        .getInstance(getApplicationContext())
+                        .getAppDatabase()
+                        .moviesDao()
+                        .getAll();
+                return taskList;
+            }
+
+            @Override
+            protected void onPostExecute(List<Movies> movies) {
+                super.onPostExecute(movies);
+                MovieAdapter adapter = new MovieAdapter(MovieListView.this, movies);
+                recyclerView.setAdapter(adapter);
+                progressDialog.dismiss();
+            }
+        }
+            GetMovies getMovies = new GetMovies();
+            getMovies.execute();
     }
 }
