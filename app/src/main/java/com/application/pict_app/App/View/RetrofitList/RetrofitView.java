@@ -25,6 +25,7 @@ public class RetrofitView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit_view);
+        getSupportActionBar().setTitle("Retrofit");
         initialiazation();
         getSuperHeros();
     }
@@ -54,13 +55,6 @@ public class RetrofitView extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             Toast.makeText(getApplicationContext(),myheroList.get(i).getSuperName(),Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    listView.setOnLongClickListener(new View.OnLongClickListener() {
-                        @Override
-                        public boolean onLongClick(View view) {
-                            Toast.makeText(getApplicationContext(),"LONG CLICKED",Toast.LENGTH_LONG).show();
-                            return false;
                         }
                     });
                     progressDialog.dismiss();
