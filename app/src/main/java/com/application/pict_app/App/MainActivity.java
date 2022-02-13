@@ -1,5 +1,6 @@
 package com.application.pict_app.App;
 
+import com.application.pict_app.App.View.Movie_Room.MovieListView;
 import com.application.pict_app.App.View.RetrofitList.RetrofitView;
 import com.application.pict_app.R;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent1 = new Intent(MainActivity.this, RetrofitView.class);
                 startActivity(intent1);
                 break;
+            case R.id.button_2:
+                Intent intent2 = new Intent(MainActivity.this, MovieListView.class);
+                startActivity(intent2);
+                break;
+
         }
     }
 }
